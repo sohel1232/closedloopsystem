@@ -13,6 +13,6 @@ import lombok.Data;
 public class TwilioConfig {
     private String accountSid;
     private String authToken;
-    private String phoneNumber;
+    private String trialNumber;
 
 }
