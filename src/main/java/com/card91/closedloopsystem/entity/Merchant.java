@@ -16,9 +16,6 @@ public class Merchant {
     @Column(name = "merchant_name")
     private String merchantName;
 
-    @Column(name = "balance")
-    private BigDecimal merchantBalance;
-
     @Column(name = "machine_status")
     private String machineStatus;
 

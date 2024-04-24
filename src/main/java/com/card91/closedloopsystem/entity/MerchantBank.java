@@ -2,6 +2,8 @@ package com.card91.closedloopsystem.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "merchant_bank")
 public class MerchantBank {
@@ -15,6 +17,9 @@ public class MerchantBank {
 
     @Column(name = "bank_id")
     private Long bankId;
+
+    @Column(name = "merchant_balance")
+    private BigDecimal merchantBalance;
 
     @Column(name = "mdr")
     private Double mdr;
