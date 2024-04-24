@@ -30,4 +30,8 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "merchant_id")
     private Merchant merchant;
+
+    @ManyToOne
+    @JoinColumn(name = "settlement_sheet_id")
+    private SettlementSheet settlementSheet;
 }

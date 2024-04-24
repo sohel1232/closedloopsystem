@@ -38,4 +38,8 @@ public class Bank {
             inverseJoinColumns = @JoinColumn(name = "merchant_id")
     )
     private List<Merchant> registeredMerchants;
+
+    @OneToMany(mappedBy = "bank")
+    private List<SettlementSheet> settlementSheets;
+
 }
