@@ -42,7 +42,6 @@ public class AuthenticationController {
     @RequestMapping(value = "requestOtp/{phoneNo}",method = RequestMethod.GET)
     public Map<String,Object> getOtp(@PathVariable String phoneNo){
         Map<String,Object> returnMap=new HashMap<>();
-        System.out.println("ujkdfbvlkbnkdfj");
         try{
             System.out.println("inside try");
             //generate OTP

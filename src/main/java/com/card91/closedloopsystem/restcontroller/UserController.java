@@ -8,10 +8,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -25,6 +28,26 @@ public class UserController {
         this.userService = userService;
         this.cardService = cardService;
     }
+
+    @RequestMapping(value = "/register" , method = RequestMethod.POST)
+    public ResponseEntity<?> registerUser(@RequestBody User userRequest,
+                                          Authentication authentication){
+        Map<String,Object> response = new HashMap<>();
+        String loggedInNumber = authentication.getName();
+
+        User user = userService.findByPhoneNumber(loggedInNumber);
+        if(user!=null || loggedInNumber==userRequest.getPhoneNumber()){
+            response.put("message","user already exsists");
+            return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+        }
+
+        User newUser = new User(userRequest.getUserName(),userRequest.getPhoneNumber());
+        userService.save(newUser);
+        response.put("message","User registered successfully");
+        response.put("user",newUser);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
+
 
     @RequestMapping(value = "/{userId}/cards",method = RequestMethod.GET)
     public ResponseEntity<?> getCards(@PathVariable Long userId){
