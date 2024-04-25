@@ -20,10 +20,6 @@ public class ClosedloopsystemApplication {
 	@Autowired
 	private TwilioConfig twilioConfig;
 
-	@Autowired
-	private UserRepository userRepository;
-
-
 	@PostConstruct
 	public void setup() {
 		Twilio.init(twilioConfig.getAccountSid(), twilioConfig.getAuthToken());
