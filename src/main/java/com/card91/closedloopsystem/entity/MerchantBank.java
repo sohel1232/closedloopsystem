@@ -1,11 +1,17 @@
 package com.card91.closedloopsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "merchant_bank")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MerchantBank {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

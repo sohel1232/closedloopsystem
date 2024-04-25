@@ -1,6 +1,7 @@
 package com.card91.closedloopsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -8,6 +9,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "card")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,99 +52,7 @@ public class Card {
     @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
     private List<Transaction> transactions;
 
-    public Long getCardId() {
-        return cardId;
-    }
+    @OneToMany(mappedBy = "card")
+    private List<Request> requestList;
 
-    public void setCardId(Long cardId) {
-        this.cardId = cardId;
-    }
-
-    public BigDecimal getCardBalance() {
-        return cardBalance;
-    }
-
-    public void setCardBalance(BigDecimal cardBalance) {
-        this.cardBalance = cardBalance;
-    }
-
-    public BigDecimal getTodaysSpent() {
-        return todaysSpent;
-    }
-
-    public void setTodaysSpent(BigDecimal todaysSpent) {
-        this.todaysSpent = todaysSpent;
-    }
-
-    public BigDecimal getDailySpentMaxLimit() {
-        return dailySpentMaxLimit;
-    }
-
-    public void setDailySpentMaxLimit(BigDecimal dailySpentMaxLimit) {
-        this.dailySpentMaxLimit = dailySpentMaxLimit;
-    }
-
-    public BigDecimal getMonthlySpentMaxLimit() {
-        return monthlySpentMaxLimit;
-    }
-
-    public void setMonthlySpentMaxLimit(BigDecimal monthlySpentMaxLimit) {
-        this.monthlySpentMaxLimit = monthlySpentMaxLimit;
-    }
-
-    public String getCardStatus() {
-        return cardStatus;
-    }
-
-    public void setCardStatus(String cardStatus) {
-        this.cardStatus = cardStatus;
-    }
-
-    public LocalDateTime getExpirydate() {
-        return expirydate;
-    }
-
-    public void setExpirydate(LocalDateTime expirydate) {
-        this.expirydate = expirydate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "cardId=" + cardId +
-                ", cardBalance=" + cardBalance +
-                ", todaysSpent=" + todaysSpent +
-                ", dailySpentMaxLimit=" + dailySpentMaxLimit +
-                ", monthlySpentMaxLimit=" + monthlySpentMaxLimit +
-                ", cardStatus='" + cardStatus + '\'' +
-                ", expirydate=" + expirydate +
-                ", user=" + user +
-                ", bank=" + bank +
-                ", transactions=" + transactions +
-                '}';
-    }
 }

@@ -1,12 +1,18 @@
 package com.card91.closedloopsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
 @Table(name = "bank")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bank {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +47,8 @@ public class Bank {
 
     @OneToMany(mappedBy = "bank")
     private List<SettlementSheet> settlementSheets;
+
+    @OneToMany(mappedBy = "bank")
+    private List<Request> requestList;
 
 }

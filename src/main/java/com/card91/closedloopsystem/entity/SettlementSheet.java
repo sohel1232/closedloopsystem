@@ -2,6 +2,7 @@ package com.card91.closedloopsystem.entity;
 
 import com.card91.closedloopsystem.repository.TransactionRepository;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
@@ -9,6 +10,11 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "settlement_sheet")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SettlementSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +25,7 @@ public class SettlementSheet {
     @JoinColumn(name = "card_id")
     private Card card; //card from where to deduct
 
+    @Column(name = "date")
     private Date date; //date for which the settlement sheet is being created
 
     @ManyToOne

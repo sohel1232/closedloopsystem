@@ -1,12 +1,18 @@
 package com.card91.closedloopsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
 @Table(name="merchant")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Merchant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +38,7 @@ public class Merchant {
             inverseJoinColumns = @JoinColumn(name = "bank_id")
     )
     private List<Bank> banks;
+
+    @OneToMany(mappedBy = "merchant")
+    private List<Request> requestList;
 }
