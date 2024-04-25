@@ -34,7 +34,10 @@ public class OtpService {
     public String generateOtp(String phoneNo){
         PhoneNumber to = new PhoneNumber(phoneNo);
         PhoneNumber from = new PhoneNumber(twilioConfig.getTrialNumber());
+        System.out.println("To " + to);
+        System.out.println("from  " + from);
         String otp = getRandomOTP(phoneNo);
+        System.out.println("otp " + otp);
         String otpMessage = "Dear Customer , Your OTP is " + otp + ". Use this otp to log in to Rapido Clone Application";
         Message message = Message
                 .creator(to, from,

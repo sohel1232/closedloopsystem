@@ -16,6 +16,9 @@ public class Merchant {
     @Column(name = "merchant_name")
     private String merchantName;
 
+    @Column(name = "merchant_phonenumber")
+    private String phoneNumber;
+
     @Column(name = "machine_status")
     private String machineStatus;
 
