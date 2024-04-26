@@ -24,14 +24,14 @@ public class Request {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "bank_id")
     private Bank bank;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "card_id")
     private Card card;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "merchant_id")
     private Merchant merchant;
 }
